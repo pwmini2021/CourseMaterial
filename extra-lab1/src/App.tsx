@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import HelperComponent from './components/HelperComponent';
+import ParentComponent from './components/ParentComponent';
 
-function App() {
+const App: React.FC = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      Learn react
+      <ParentComponent />
+      <HelperComponent />
     </div>
   );
 }
 
 export default App;
+
+
+/* Agenda
+
+1. Typescript and JS
+  - Typescript in functional components (defining types)
+  - Destructuring objects
+  - Spread operator
+
+2. Assistance with Lab4
+
+*/
