@@ -5,7 +5,7 @@ const HelperComponent: React.FC = () => {
     function destructure() {
         const person = {
             name: "Anna",
-            age: "23",
+            age: 23,
             nationality: "Polish"
         };
         
@@ -27,14 +27,14 @@ const HelperComponent: React.FC = () => {
 
     function spreadOperatorSumOfArrayElements() {
         const numbers: [number,number,number,number] = [1,2,3,4];
-        const sumOfNumbers = sum(numbers[0],numbers[1],numbers[2],numbers[3]);
-        //const sumOfNumbers = sum(...numbers);
+        //const sumOfNumbers = sum(numbers[0],numbers[1],numbers[2],numbers[3]);
+        const sumOfNumbers = sum(...numbers);
         console.log('sumOfNumbers: ' + sumOfNumbers);
     }
 
     function spreadOperatorArrayElements() {
         const numbers: [number,number,number,number] = [1, 2, 3, 4];
-        const extendedNumbers = [...numbers, 23, 45];
+        const extendedNumbers = [...numbers, 23,45];
         console.log(extendedNumbers);
     }
     
@@ -45,18 +45,27 @@ const HelperComponent: React.FC = () => {
             nationality: "Polish",
             friend: {
                 name: 'John',
+                age: 34,
             }
         };
 
-        //const person1 = person;
-        const person1 = {...person};
 
-        person1.name = "Lukasz";
-        person1.friend.name = "Hector";
+       // this here is a 'shallow copy'
+       const person1 = {...person};
+
+       // be aware, only first level parameters are copied, so 'name' parameter is copied and 
+       person1.name = "Lukasz";
+
+       // but 'friend' is just a reference to object. When frend was copied then on new object 'person1' 
+       // parameter 'friend' references the same object - the same area in memory 
+       // run this and observe outocome in console log
+       person1.friend.name = "Hector";
 
         console.log('Person:' + JSON.stringify(person));
         console.log('Person1:' + JSON.stringify(person1));
         
+        // To create 'deep copy' of an object you can use syntax with spread operators but 
+        // I would suggest using existing tools lile lodoash '_.cloneDeep()'
     }
 
 

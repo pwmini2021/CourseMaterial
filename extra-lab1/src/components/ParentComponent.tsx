@@ -10,7 +10,7 @@ const [other, setOther] = useState(2);
   return (
     <div>
       {studentsList.map((studentName) => (
-        <ChildComponent name={studentName} age={other} />
+        <ChildComponent name={studentName} age={1}/>
       ))}
     </div>
   );
